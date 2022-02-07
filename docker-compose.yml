@@ -1,0 +1,41 @@
+#version 
+version: '3.1'
+
+#setup
+services:
+#Php
+  php:
+    depends_on:
+      - db
+    image: docker-php-dev
+    restart: always
+    ports:
+      - 5000:80
+    volumes:
+    - ./development:/var/www/html 
+
+#Phpmyadmin
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 5050:80
+    environment:
+      PMA_HOST: db
+
+#mysql
+  db:
+    image: mysql:5.7
+    restart: always
+    volumes:
+      - myapp:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: istana
+      MYSQL_ROOT_PASSWORD: advance
+      MYSQL_PASSWORD: advance
+
+volumes:
+  myapp:
+    
