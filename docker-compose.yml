@@ -33,7 +33,7 @@ services:
     volumes:
       - myapp:/var/lib/mysql
     environment:
-      MYSQL_DATABASE: istana
+      #MYSQL_DATABASE: istana
       MYSQL_ROOT_PASSWORD: advance
       MYSQL_PASSWORD: advance
 
